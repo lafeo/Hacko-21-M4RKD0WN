@@ -1,0 +1,16 @@
+@import 'vars';
+
+*{
+    padding:0;
+    margin:0;
+    font-family: $head-font;
+}
+  
+  html, body, #root{
+    width: 100%;
+    height: 100%;
+  }
+
+.overflow-none{
+    overflow: hidden;
+}

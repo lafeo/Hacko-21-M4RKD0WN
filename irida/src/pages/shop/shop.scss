@@ -1,0 +1,26 @@
+.shop{
+    display: flex;
+    padding-top: 60px;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    color: white;
+
+    hr{
+        border-color: #fff;
+    }
+    .card{
+        border-radius: 30px;
+        background: linear-gradient(145deg, #171717, #222222);
+        box-shadow:  10px 10px 30px #141414,
+             -10px -10px 30px #202020;
+        color: white;
+        margin: 1rem auto;
+        height: auto;
+
+        img{
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            
+        }
+    }
+}
