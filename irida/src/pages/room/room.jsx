@@ -37,7 +37,7 @@ const Room = () => {
 
 		socket.on("callUser", (data) => {
 			setReceivingCall(true)
-			setCaller(data.from)//volunteer
+			setCaller(data.from)
 			setName(data.name)
 			setCallerSignal(data.signal)
 		})
