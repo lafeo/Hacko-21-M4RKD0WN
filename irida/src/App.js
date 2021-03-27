@@ -16,6 +16,7 @@ import 'misc/_common.scss';
 // import Signin from 'pages/signin/signin';
 import Auth from 'pages/auth/auth';
 import Dashboard from 'pages/dashboard/dashboard';
+import Room from 'pages/room/room';
 // import Signin from 'pages/signin/signin';
 // import Signup from 'pages/signup/signup';
 
@@ -28,6 +29,10 @@ function App() {
       <Navigation logged={logged} setLogged={setLogged}/>
       {!logged?
       <Switch>
+        <Route exact path="/room">
+          <Room/>
+        </Route> 
+
         <Route exact path="/volunteer">
           <Auth logged={logged} setLogged={setLogged}/>
         </Route> 

@@ -1,0 +1,25 @@
+{
+  "name": "hacko-21-m4rkd0wn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lafeo/Hacko-21-M4RKD0WN.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lafeo/Hacko-21-M4RKD0WN/issues"
+  },
+  "homepage": "https://github.com/lafeo/Hacko-21-M4RKD0WN#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "socket.io": "^4.0.0"
+  }
+}
