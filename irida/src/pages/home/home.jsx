@@ -36,7 +36,7 @@ const Home = () =>{
                     <h2> <b>     You are doing well! Lets converse </b></h2>  
                     <h4>To get started click the button below</h4> 
                     
-                    <div className="call-button">
+                    <div className="call-button" onClick={()=> alert("Coming soon")}>
                         <i className="fas fa-phone-alt"></i>
                     </div>
                 </div>

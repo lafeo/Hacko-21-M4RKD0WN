@@ -15,7 +15,7 @@ const Auth = ({logged,setLogged}) => {
                     <div className="banner-content">
                         <b><h1>Get Certified</h1></b>
                         <p className="w-75 h5">Working as a volunteer to help others requires a skill. Enroll in our programme to become a certified volunteer. </p>
-                        <Button href="https://nhsvolunteerresponders.org.uk/volunteer-resources">
+                        <Button href="https://nhsvolunteerresponders.org.uk/i-want-to-volunteer">
                         Enroll now
                         </Button>
                     </div>
