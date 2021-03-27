@@ -11,6 +11,7 @@ import 'misc/_common.scss';
 import Shop from 'pages/shop/shop';
 import Signup from 'pages/signup/signup';
 import Signin from 'pages/signin/signin';
+import Auth from 'pages/auth/auth';
 
 function App() {
 
@@ -18,8 +19,8 @@ function App() {
     <Router>
       <Navigation/>
       <Switch>
-        <Route path="/signup">
-          <Signup/>
+        <Route path="/volunteer">
+          <Auth/>
         </Route>
         <Route path="/signin">
           <Signin/>

@@ -14,3 +14,15 @@
 .overflow-none{
     overflow: hidden;
 }
+
+.navbar{
+  background-color: $navbar;
+
+}
+
+.logo-text{
+  font-weight: bolder;
+  transform: scale(2);
+  margin: 0 1rem;
+}
+

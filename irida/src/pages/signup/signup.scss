@@ -1,20 +1,8 @@
-.signup{
-    min-height: 100vh;
-    background-color: #1a1a1a;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 56px 0 10px 0;
+@import 'misc/vars';
+
+      
     
-    .form-neo{
-        border-radius: 30px;
-        background: linear-gradient(145deg, #171717, #1c1c1c);
-        box-shadow:  10px 10px 20px #0f0f0f,
-                    -10px -10px 20px #252525;
-        padding: 1rem 2rem;
-        margin: 0 1rem;
-
-
-    }
+.form-neo{
+    background-color: #fff;
+    padding: 1rem 2rem;        
 }

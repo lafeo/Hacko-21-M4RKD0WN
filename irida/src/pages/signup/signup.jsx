@@ -5,10 +5,9 @@ import { Link } from 'react-router-dom';
 import './signup.scss'
 const Signup = () => {
     return (
-        <section className="signup">
             <Form className="form-neo">
                 <Form.Row>
-                    <h3 className="py-2">Signup | I R I D A</h3>
+                    <h3 className="py-2">Volunteer Signup | <span className="logo-text mx-0">ek</span></h3>
                 </Form.Row>
                     <Form.Row>
                     <Form.Group as={Col} controlId="formGridName">
@@ -33,29 +32,23 @@ const Signup = () => {
                     <Form.Control placeholder="+91 0000000000"/>
                 </Form.Group>
 
-                <Form.Group controlId="formGridAddress2">
-                    <Form.Label>Address</Form.Label>
-                    <Form.Control placeholder="Flat no, city, area, locality" />
+                <Form.Group controlId="formCertificationId">
+                    <Form.Label>Certification ID</Form.Label>
+                    <Form.Control placeholder="Certification ID"/>
                 </Form.Group>
-
-                <Form.Group controlId="formGridZip">
-                    <Form.Label>Zip</Form.Label>
-                    <Form.Control placeholder="000000"/>
-                    </Form.Group>
 
                 <Form.Group id="formGridCheckbox">
                     <Form.Check type="checkbox" label="Agree to company's terms and conditions" />
                 </Form.Group>
 
 
-                <Button variant="primary" type="submit">
-                    Submit
+                <Button variant="success" type="submit">
+                    Signup
                 </Button>
                 <Form.Row>
                     <span className="my-2">Already have an account ? <Link to="/signin">Login</Link></span>
                 </Form.Row>
-                </Form>
-        </section>
+            </Form>
     );
 }
 
