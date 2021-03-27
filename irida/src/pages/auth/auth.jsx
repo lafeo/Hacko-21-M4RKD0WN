@@ -3,7 +3,7 @@ import {Container,Row,Col, Button} from 'react-bootstrap'
 import Signin from '../signin/signin';
 import Signup from '../signup/signup';
 import './auth.scss';
-const Auth = () => {
+const Auth = ({logged,setLogged}) => {
 
     const [auth,setAuth] = useState(0);
 
@@ -23,9 +23,9 @@ const Auth = () => {
 
                 <Col md={5} className="d-flex justify-content-center align-items-center" >
                     {auth?
-                    <Signin auth={auth} setAuth={setAuth} />
+                    <Signin auth={auth} setAuth={setAuth} logged={logged} setLogged={setLogged} />
                     :
-                    <Signup auth={auth} setAuth={setAuth}/>
+                    <Signup auth={auth} setAuth={setAuth} logged={logged} setLogged={setLogged}/>
                     }
                 </Col>
             </Row>

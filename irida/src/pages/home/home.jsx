@@ -33,8 +33,8 @@ const Home = () =>{
                         Sell Now
                         </Button>
                     </div> */}  
-                    <h2><span className="logo-text mx-0 h1 ">ek</span> can help you in providing help</h2>  
-                    <h4>Help <span className="logo-text mx-0 h1">ek</span> click door hai!</h4> 
+                    <h2> <b>     You are doing well! Lets converse </b></h2>  
+                    <h4>To get started click the button below</h4> 
                     
                     <div className="call-button">
                         <i className="fas fa-phone-alt"></i>
