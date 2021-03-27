@@ -1,17 +1,32 @@
-import React from 'react';
-import {Container,Row,Col} from 'react-bootstrap'
+import React, {useState} from 'react';
+import {Container,Row,Col, Button} from 'react-bootstrap'
+import Signin from '../signin/signin';
 import Signup from '../signup/signup';
 import './auth.scss';
 const Auth = () => {
+
+    const [auth,setAuth] = useState(0);
+
+
     return (
         <Container className="auth" fluid>
             <Row className="w-100 mx-auto">
-                <Col className="bg-primary">
-
+                <Col className="banner text-light d-md-flex d-none align-items-center">
+                    <div className="banner-content">
+                        <b><h1>Get Certified</h1></b>
+                        <p className="w-75 h5">Working as a volunteer to help others requires a skill. Enroll in our programme to become a certified volunteer. </p>
+                        <Button href="https://nhsvolunteerresponders.org.uk/volunteer-resources">
+                        Enroll now
+                        </Button>
+                    </div>
                 </Col>
 
-                <Col md={6} className="d-flex justify-content-center align-items-center" >
-                    <Signup />
+                <Col md={5} className="d-flex justify-content-center align-items-center" >
+                    {auth?
+                    <Signin auth={auth} setAuth={setAuth} />
+                    :
+                    <Signup auth={auth} setAuth={setAuth}/>
+                    }
                 </Col>
             </Row>
         </Container>

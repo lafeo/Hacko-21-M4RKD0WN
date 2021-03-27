@@ -3,12 +3,12 @@ import {Form, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './signin.scss'
-const Signin = () => {
+const Signin = ({auth,setAuth}) => {
     return (
         <section className="signin">
             <Form className="form-neo">
                 <Form.Row>
-                    <h3 className="py-2">Signin | I R I D A</h3>
+                    <h3 className="py-2">Signin | <span className="logo-text mx-0">ek   </span></h3>
                 </Form.Row>
 
                 <Form.Group controlId="formGridEmail">
@@ -27,7 +27,7 @@ const Signin = () => {
                     Login
                 </Button>
                 <Form.Row>
-                    <span className="my-2">Don't have an account ? <Link to="/signup">Signup</Link></span>
+                    <span className="my-2">Don't have an account ? <span className="text-primary" onClick={()=> setAuth(!auth)}>Signup</span></span>
                 </Form.Row>
                 </Form>
         </section>

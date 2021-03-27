@@ -19,17 +19,9 @@ function App() {
     <Router>
       <Navigation/>
       <Switch>
-        <Route path="/volunteer">
+        <Route exact path="/volunteer">
           <Auth/>
-        </Route>
-        <Route path="/signin">
-          <Signin/>
-        </Route>
-        
-        <Route path="/shop">
-          <Shop/>
-        </Route>
-        
+        </Route> 
         <Route path="/">
           <Home/>
         </Route>

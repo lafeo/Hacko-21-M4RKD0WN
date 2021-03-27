@@ -3,7 +3,7 @@ import {Form, Button, Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './signup.scss'
-const Signup = () => {
+const Signup = ({auth,setAuth}) => {
     return (
             <Form className="form-neo">
                 <Form.Row>
@@ -33,7 +33,7 @@ const Signup = () => {
                 </Form.Group>
 
                 <Form.Group controlId="formCertificationId">
-                    <Form.Label>Certification ID</Form.Label>
+                    <Form.Label>Certification ID <b>( If not certified <a href="https://nhsvolunteerresponders.org.uk/volunteer-resources"> click here </a>) </b> </Form.Label>
                     <Form.Control placeholder="Certification ID"/>
                 </Form.Group>
 
@@ -46,7 +46,7 @@ const Signup = () => {
                     Signup
                 </Button>
                 <Form.Row>
-                    <span className="my-2">Already have an account ? <Link to="/signin">Login</Link></span>
+                    <span className="my-2">Already have an account ? <span className="text-primary" onClick={()=>setAuth(!auth)}>Login</span></span>
                 </Form.Row>
             </Form>
     );
