@@ -1,10 +1,10 @@
 import Button from "@material-ui/core/Button"
 import IconButton from "@material-ui/core/IconButton"
-import TextField from "@material-ui/core/TextField"
-import AssignmentIcon from "@material-ui/icons/Assignment"
+// import TextField from "@material-ui/core/TextField"
+// import AssignmentIcon from "@material-ui/icons/Assignment"
 import PhoneIcon from "@material-ui/icons/Phone"
 import React, { useEffect, useRef, useState } from "react"
-import { CopyToClipboard } from "react-copy-to-clipboard"
+// import { CopyToClipboard } from "react-copy-to-clipboard"
 import Peer from "simple-peer"
 import io from "socket.io-client"
 import './room.scss'
@@ -16,14 +16,14 @@ const socket = io.connect('http://localhost:5000')
 
 const Room = (props) => {
     // const location = useLocation();
-
+    const [roomData,setRoomData] = useState(0);
     const [ me, setMe ] = useState("") //user
 	const [ stream, setStream ] = useState()
 	const [ receivingCall, setReceivingCall ] = useState(false)
 	const [ caller, setCaller ] = useState("")
 	const [ callerSignal, setCallerSignal ] = useState()
 	const [ callAccepted, setCallAccepted ] = useState(false)
-	const [ idToCall, setIdToCall ] = useState("") //volunteer
+	// const [ idToCall, setIdToCall ] = useState("") //volunteer
 	const [ callEnded, setCallEnded] = useState(false)
 	const [ name, setName ] = useState("")
 	const myVideo = useRef()
@@ -44,10 +44,7 @@ const Room = (props) => {
 			setMe(id)
             console.log(id);
 
-            
-           
             const roomRef = firebase.database().ref('rooms').child(props.match.params.id.slice(0,6));
-
             if(props.match.params.id.length === 6)
            { 
                roomRef.update(    
@@ -71,6 +68,7 @@ const Room = (props) => {
                 }
             )
         }
+            
 
 		})
 
@@ -80,6 +78,13 @@ const Room = (props) => {
 			setName(data.name)
 			setCallerSignal(data.signal)
 		})
+
+        const roomRef = firebase.database().ref('rooms').child(props.match.params.id.slice(0,6));
+        roomRef.on('value', (snapshot)=>{
+            setRoomData(snapshot.val());
+        })
+
+
 	}, [props.match.params.id])
 
 	const callUser = (id) => {
@@ -129,7 +134,14 @@ const Room = (props) => {
 
 	const leaveCall = () => {
 		setCallEnded(true)
-		connectionRef.current.destroy()
+        
+        const roomRef = firebase.database().ref('rooms').child(props.match.params.id.slice(0,6));
+        roomRef.remove();
+        
+        const uRef = firebase.database().ref('Users').orderByChild("profile/cert").equalTo(roomData.profile.cert);
+        uRef.child('tempRoomId').remove();
+		
+        connectionRef.current.destroy()
 	}
 
 	return (
@@ -146,39 +158,46 @@ const Room = (props) => {
 					null}
 				</div>
 			</div>
+            {roomData? console.log(roomData) : <></>}
 			<div className="myId">
-				<TextField
+				{/* <TextField
 					id="filled-basic"
 					label="Name"
 					variant="filled"
 					value={name}
 					onChange={(e) => setName(e.target.value)}
 					style={{ marginBottom: "20px" }}
-				/>
-				<CopyToClipboard text={me} style={{ marginBottom: "2rem" }}>
+				/> */}
+				{/* <CopyToClipboard text={me} style={{ marginBottom: "2rem" }}>
 					<Button variant="contained" color="primary" startIcon={<AssignmentIcon fontSize="large" />}>
 						Copy ID
 					</Button>
-				</CopyToClipboard>
+				</CopyToClipboard> */}
 
-				<TextField
+				{/* <TextField
 					id="filled-basic"
 					label="ID to call"
 					variant="filled"
 					value={idToCall}
 					onChange={(e) => setIdToCall(e.target.value)}
-				/>
+				/> */}
 				<div className="call-button">
 					{callAccepted && !callEnded ? (
 						<Button variant="contained" color="secondary" onClick={leaveCall}>
 							End Call
 						</Button>
 					) : (
-						<IconButton color="primary" aria-label="call" onClick={() => callUser(idToCall)}>
+
+                        <>
+                        {roomData.volunteerSocketId ? 
+						<IconButton color="primary" aria-label="call" onClick={() => callUser(roomData.volunteerSocketId)}>
 							<PhoneIcon fontSize="large" />
 						</IconButton>
-					)}
-					{idToCall}
+                        :
+                        <></>}
+                    </>
+                )}
+					{roomData.volunteerSocketId? roomData.volunteerSocketId : <></>}
 				</div>
 			</div>
 			<div>
