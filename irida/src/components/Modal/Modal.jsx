@@ -38,6 +38,10 @@ function MyVerticallyCenteredModal(props) {
         }
         
         )
+
+
+        if(volunteerProfile.profile){
+
         const roomId = makeid(6);
         console.log(volunteerProfile)
             const roomRef = firebase.database().ref('rooms').child(roomId);
@@ -77,6 +81,10 @@ function MyVerticallyCenteredModal(props) {
                   return true;
               });
             })
+          }
+          else{
+            alert("No available volunteers, please wait for some time.. ");
+          }
         })
           .catch((error) => {
             let errorCode = error.code;

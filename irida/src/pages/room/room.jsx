@@ -43,9 +43,14 @@ const Room = (props) => {
 	socket.on("me", (id) => {
 			setMe(id)
             console.log(id);
-            const roomRef = firebase.database().ref('rooms').child(props.match.params.id);
-          
-            roomRef.update(    
+
+            
+           
+            const roomRef = firebase.database().ref('rooms').child(props.match.params.id.slice(0,6));
+
+            if(props.match.params.id.length === 6)
+           { 
+               roomRef.update(    
                 {
                     userSocketId: id
                 },
@@ -54,6 +59,19 @@ const Room = (props) => {
                     console.log(err);
                 }
             )
+        }
+        else{
+            roomRef.update(    
+                {
+                    volunteerSocketId: id
+                },
+                err => {
+                    if(err)
+                    console.log(err);
+                }
+            )
+        }
+
 		})
 
 		socket.on("callUser", (data) => {
@@ -62,7 +80,7 @@ const Room = (props) => {
 			setName(data.name)
 			setCallerSignal(data.signal)
 		})
-	}, [])
+	}, [props.match.params.id])
 
 	const callUser = (id) => {
 		const peer = new Peer({

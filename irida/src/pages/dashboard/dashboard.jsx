@@ -34,8 +34,13 @@ const Dashboard = () => {
                     </div>
                 </Col> */}
 
-                <Col className="d-flex justify-content-center align-items-center" >
+                <Col className="d-flex justify-content-center align-items-center flex-column" >
                     <h1>Welcome {userData.name} !</h1>
+                    <h3>{userData.cert}</h3>
+                    <h3>{userData.tempRoomId? window.location.href = '/room/' + userData.tempRoomId + 'v0lUn' : <></> }</h3>
+                    <h3>{userData.engaged? "Engaged" : "Available"} </h3>
+                
+                
                 </Col>
             </Row>
         </Container>
