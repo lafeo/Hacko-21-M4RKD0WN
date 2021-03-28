@@ -17,6 +17,8 @@ const socket = io.connect('http://localhost:5000')
 const Room = (props) => {
     // const location = useLocation();
     const [roomData,setRoomData] = useState(0);
+    const [volunteerCert,setVolunteerCert] = useState(0);
+    
     const [ me, setMe ] = useState("") //user
 	const [ stream, setStream ] = useState()
 	const [ receivingCall, setReceivingCall ] = useState(false)
@@ -82,6 +84,8 @@ const Room = (props) => {
         const roomRef = firebase.database().ref('rooms').child(props.match.params.id.slice(0,6));
         roomRef.on('value', (snapshot)=>{
             setRoomData(snapshot.val());
+            console.log(snapshot.val())
+            setVolunteerCert(snapshot.val().cert);
         })
 
 
@@ -135,12 +139,22 @@ const Room = (props) => {
 	const leaveCall = () => {
 		setCallEnded(true)
         
+        if(props.match.params.id.length>6){
         const roomRef = firebase.database().ref('rooms').child(props.match.params.id.slice(0,6));
         roomRef.remove();
         
-        const uRef = firebase.database().ref('Users').orderByChild("profile/cert").equalTo(roomData.profile.cert);
+        if(roomData.profile){
+        const uRef = firebase.database().ref('Users').orderByChild("profile/cert").equalTo(volunteerCert);
         uRef.child('tempRoomId').remove();
-		
+		}
+        else{
+            window.location.href = '/';
+        }
+    }
+    else{
+        window.location.href = '/';
+        
+    }
         connectionRef.current.destroy()
 	}
 
