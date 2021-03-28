@@ -19,20 +19,22 @@ import Dashboard from 'pages/dashboard/dashboard';
 import Room from 'pages/room/room';
 // import Signin from 'pages/signin/signin';
 // import Signup from 'pages/signup/signup';
+import { createBrowserHistory } from 'history';
 
 function App() {
   const [logged,setLogged] = useState(0);
   // const [auth,setAuth] = useState(0);
-
+  const history = createBrowserHistory()
+    
   return (
-    <Router>
+    
+    <Router history= {history}>
       <Navigation logged={logged} setLogged={setLogged}/>
+      
       {!logged?
       <Switch>
-        <Route exact path="/room">
-          <Room/>
-        </Route> 
-
+       <Route exact path='/room/:id' render={(props) => {return ( <Room {...props} /> )}} />
+        
         <Route exact path="/volunteer">
           <Auth logged={logged} setLogged={setLogged}/>
         </Route> 
@@ -43,6 +45,8 @@ function App() {
       </Switch>
   :
       <Switch>
+       <Route exact path='/room/:id' render={(props) => {return ( <Room {...props} /> )}} />
+        
         <Route path='/dashboard' exact component={() => <Dashboard setLogged={setLogged }/>}/>
         <Route path='/' render={() => <Redirect to="/dashboard"/>}/>
       </Switch>

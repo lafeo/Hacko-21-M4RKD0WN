@@ -1,9 +1,12 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useState} from 'react';
 import './home.scss';
 import {useSpring, animated} from 'react-spring';
 import $ from 'jquery';
+import MyVerticallyCenteredModal from 'components/Modal/Modal';
+
 
 const Home = () =>{
+    const [modalShow, setModalShow] = useState(false);
     
     const props = useSpring({
         from : { transform: 'scale(1.5)', overflow: 'hidden'},
@@ -20,28 +23,26 @@ const Home = () =>{
         
     }, [])
     return(
-                <animated.section style={props} className="home" >
+
+          <animated.section style={props} className="home" >
                 <div className="bg-skew"></div>
                 <div className="center-out">
-                    {/* <h1>e k</h1>
-                    <p>- Some random tagline which can impress judges</p>
-                    <div>
-                        <Button variant="dark" size="lg" href="/shop">
-                        Shop Now
-                        </Button>{' '}
-                        <Button variant="dark" size="lg" href="/signup">
-                        Sell Now
-                        </Button>
-                    </div> */}  
-                    <h2> <b>     You are doing well! Lets converse </b></h2>  
+                    <h2> <b>You are doing well! Lets converse </b></h2>  
                     <h4>To get started click the button below</h4> 
                     
-                    <div className="call-button" onClick={()=> alert("Coming soon")}>
+                    <div className="call-button" onClick={()=>setModalShow(!modalShow)}>
                         <i className="fas fa-phone-alt"></i>
                     </div>
                 </div>
-                </animated.section>
-    )
+                <MyVerticallyCenteredModal
+
+                show={modalShow}
+                onHide={() => setModalShow(false)}/>
+
+            </animated.section>
+
+            )
+
 }
 
 export default Home;

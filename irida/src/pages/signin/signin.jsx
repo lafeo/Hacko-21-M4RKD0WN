@@ -14,6 +14,11 @@ const Signin = ({auth,setAuth,logged,setLogged}) => {
         else{
             firebase.auth().signInWithEmailAndPassword(e.target.email.value,e.target.pwd.value)
             .then((userCredential) => {
+                const userId = firebase.auth().currentUser.uid;
+                const userRef = firebase.database().ref('Users').child(userId + '/profile');
+                userRef.update({
+                    engaged: 0
+                })
                 alert("Login Successful")
                 setLogged(true);
                 
@@ -57,7 +62,7 @@ const Signin = ({auth,setAuth,logged,setLogged}) => {
                 <Form.Row>
                     <span className="my-2">Don't have an account ? <span className="text-primary" onClick={()=> setAuth(!auth)}>Signup</span></span>
                 </Form.Row>
-                </Form>
+            </Form>
         </section>
     );
 }

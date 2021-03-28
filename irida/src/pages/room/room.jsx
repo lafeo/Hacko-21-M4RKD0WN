@@ -8,10 +8,15 @@ import { CopyToClipboard } from "react-copy-to-clipboard"
 import Peer from "simple-peer"
 import io from "socket.io-client"
 import './room.scss'
+// import { useLocation } from "react-router-dom";
+import firebase from '../../firebase'
+
 
 const socket = io.connect('http://localhost:5000')
 
-const Room = () => {
+const Room = (props) => {
+    // const location = useLocation();
+
     const [ me, setMe ] = useState("") //user
 	const [ stream, setStream ] = useState()
 	const [ receivingCall, setReceivingCall ] = useState(false)
@@ -25,7 +30,11 @@ const Room = () => {
 	const userVideo = useRef()
 	const connectionRef= useRef()
 
+    // location.volunteerProfile shows me the volunteer profile
+    console.log(props);
+
     useEffect(() => {
+  
 		navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then((stream) => {
 			setStream(stream)
 				myVideo.current.srcObject = stream
@@ -33,6 +42,18 @@ const Room = () => {
 
 	socket.on("me", (id) => {
 			setMe(id)
+            console.log(id);
+            const roomRef = firebase.database().ref('rooms').child(props.match.params.id);
+          
+            roomRef.update(    
+                {
+                    userSocketId: id
+                },
+                err => {
+                    if(err)
+                    console.log(err);
+                }
+            )
 		})
 
 		socket.on("callUser", (data) => {

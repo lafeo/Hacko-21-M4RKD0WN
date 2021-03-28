@@ -22,6 +22,12 @@ const Navigation = ({logged,setLogged}) =>{
             
             <Nav>
                 <Button variant="danger" onClick={()=>{
+                    const userId = firebase.auth().currentUser.uid;
+                    const userRef = firebase.database().ref('Users').child(userId + '/profile');
+                    userRef.update({
+                        engaged: 1
+                    })
+        
                     firebase.auth().signOut()
                     setLogged(false);
                 }}><Navbar.Text className="mx-3">Logout</Navbar.Text></Button>

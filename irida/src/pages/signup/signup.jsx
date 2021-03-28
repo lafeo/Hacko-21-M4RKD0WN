@@ -22,7 +22,7 @@ const Signup = (props) => {
                     mobile: e.target.phone.value,
                     cert: e.target.certID.value,
                     created: date.getTime(),
-                    
+                    engaged: 0,
                 }
 
                 usersRef.set(
