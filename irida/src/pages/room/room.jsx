@@ -143,6 +143,12 @@ const Room = (props) => {
         const roomRef = firebase.database().ref('rooms').child(props.match.params.id.slice(0,6));
         roomRef.remove();
         
+        console.log("==========");
+        console.log(roomData);
+
+        
+        console.log("-----------");
+        console.log(volunteerCert);
         if(roomData.profile){
         const uRef = firebase.database().ref('Users').orderByChild("profile/cert").equalTo(volunteerCert);
         uRef.child('tempRoomId').remove();
