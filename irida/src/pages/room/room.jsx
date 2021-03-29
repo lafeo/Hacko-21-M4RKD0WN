@@ -13,7 +13,7 @@ import firebase from '../../firebase'
 
 
 
-const socket = io.connect('http://161.97.140.104:5000')
+const socket = io.connect('https://hacko-ek.herokuapp.com:5000')
 
 const Room = (props) => {
     // const location = useLocation();

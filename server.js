@@ -6,7 +6,7 @@ const app = express()
 const server = http.createServer(app)
 const io = require("socket.io")(server, {
 	cors: {
-		origin: "http://localhost:3000",
+		origin: "https://hacko-ek.herokuapp.com:3000",
 		methods: [ "GET", "POST" ]
 	}
 })
