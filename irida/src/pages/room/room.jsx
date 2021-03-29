@@ -12,7 +12,7 @@ import './room.scss'
 import firebase from '../../firebase'
 
 
-const socket = io.connect('https://ek-backend.herokuapp.com')
+const socket = io.connect('http://161.97.140.104:5000')
 
 const Room = (props) => {
     // const location = useLocation();

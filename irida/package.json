@@ -1,5 +1,6 @@
 {
   "name": "irida",
+  "homepage":"http://161.97.140.104",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
