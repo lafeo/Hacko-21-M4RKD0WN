@@ -1,19 +1,16 @@
 const express = require("express")
 const http = require("http")
 const app = express()
+// const path = require('path');
+
 const server = http.createServer(app)
 const io = require("socket.io")(server, {
 	cors: {
-		origin: "https://ek-reactapp.netlify.app",
+		origin: "http://localhost:3000",
 		methods: [ "GET", "POST" ]
 	}
 })
 
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('/*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
 
 io.on("connection", (socket) => {
 	socket.emit("me", socket.id)
