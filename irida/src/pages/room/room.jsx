@@ -12,6 +12,7 @@ import './room.scss'
 import firebase from '../../firebase'
 
 
+
 const socket = io.connect('http://161.97.140.104:5000')
 
 const Room = (props) => {
@@ -151,7 +152,7 @@ const Room = (props) => {
         console.log(volunteerCert);
         if(roomData.profile){
         const uRef = firebase.database().ref('Users').orderByChild("profile/cert").equalTo(volunteerCert);
-        uRef.child('tempRoomId').remove();
+        uRef.remove();
 		}
         else{
             window.location.href = '/';
