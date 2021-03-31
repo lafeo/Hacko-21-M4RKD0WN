@@ -6,7 +6,11 @@ const app = express()
 const server = http.createServer(app)
 const io = require("socket.io")(server, {
 	cors: {
+<<<<<<< HEAD:backend/server.js
 		origin: "https://ek-reactapp.netlify.app",
+=======
+		origin: "https://hacko-ek.herokuapp.com:3000",
+>>>>>>> effa392ce29c3e311bf009cb3835badb001ffd22:server.js
 		methods: [ "GET", "POST" ]
 	}
 })

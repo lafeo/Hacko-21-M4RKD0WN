@@ -1,5 +1,6 @@
 {
   "name": "hacko-21-m4rkd0wn",
+  "homepage": "https://hacko-ek.herokuapp.com",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -16,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/lafeo/Hacko-21-M4RKD0WN/issues"
   },
-  "homepage": "https://github.com/lafeo/Hacko-21-M4RKD0WN#readme",
+
   "dependencies": {
     "express": "^4.17.1",
     "nodemon": "^2.0.7",
