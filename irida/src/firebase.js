@@ -3,12 +3,12 @@ import 'firebase/database';
 import 'firebase/auth';
 
 var firebaseConfig = {
-    apiKey: "AIzaSyDnFMvqkULMTKi83QrG_QyietKYoiah6sI",
-    authDomain: "ek-database.firebaseapp.com",
-    projectId: "ek-database",
-    storageBucket: "ek-database.appspot.com",
-    messagingSenderId: "503059163051",
-    appId: "1:503059163051:web:2b85294379d4e4fadc94ee"
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGING_SENDER_ID,
+    appId: process.env.APP_ID
   };
 
 export default !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
