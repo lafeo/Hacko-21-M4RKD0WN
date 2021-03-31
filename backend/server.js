@@ -1,10 +1,7 @@
 const express = require("express")
 const http = require("http")
 const app = express()
-const path = require('path');
-
-app.use(express.static("public"));
-
+// const path = require('path');
 
 const server = http.createServer(app)
 const io = require("socket.io")(server, {
@@ -13,11 +10,6 @@ const io = require("socket.io")(server, {
 		methods: [ "GET", "POST" ]
 	}
 })
-
-app.get('/', (req,res)=>{
-	res.sendFile(path.join(__dirname+'/irida/public/index.html'));
-});
-
 
 io.on("connection", (socket) => {
 	socket.emit("me", socket.id)
