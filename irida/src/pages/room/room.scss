@@ -1,52 +1,90 @@
-.container {
-	display: grid;
-	grid-template-columns: 7fr 3fr;
-}
+.room{
+	width : 100%;
+	min-height: 100vh;
+	background-color: #1789FC;
+	padding-top: 50px;
 
-.myId {
-	margin-right: 5rem;
-	border-radius: 5px;
-	background: #c9d6ff; /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #e2e2e2, #c9d6ff); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(
-		to right,
-		#e2e2e2,
-		#c9d6ff
-	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	.video-col{
+		margin: 0 2rem;
+		display: flex;
+		// flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		// .container{
+		// 	display: flex;
+		// 	justify-content: center;
 
-	padding: 2rem;
-	display: grid;
-	justify-content: center;
-	align-content: center;
-}
+		// 	align-items: center;
+		// 	margin: 1rem 0;
+			
+			.video-container{
+				display: none;
+				position: relative;
+				z-index: 3;
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				// padding-top: 47.25%;
+				box-shadow:  17px 17px 35px #1474d6,
+							 -17px -17px 35px #1a9eff;
+				
+				position: relative;
+				border-radius: 5px;
+				border: solid 2px white;
 
-.call-button {
-	text-align: center;
-	margin-top: 2rem;
-}
+				.video-max{
+					background-color: red;
+					padding: 1rem;
+					width: 100%;
+					position: relative;
+					height: 100%;
+					padding-top: 56.25%;
+				
+					border-radius: 5px;
+					display: flex;
+				}
+				.video-label{
+					position: relative;
+					z-index: 10;
+					width: 100%;
+					height: auto;
+					margin-top: auto;
+					margin-left: 1rem;
+				}
 
-.video-container {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	justify-content: center;
-	align-content: center;
-	margin-top: 10rem;
-	margin-left: 10rem;
-}
+				.video-min{
+					background-color: greenyellow;
+					padding: 1rem;
+					width: 10%;
+					// padding-top: 20%;
+					
+					border-radius: 5px;
+					margin-top: auto;
+					margin-left: auto;
+					margin-bottom: 1rem;
+					margin-right: 1rem;
+					position: relative;
+					z-index: 4;
 
-.caller {
-	text-align: center;
-	color: #fff;
-}
+					// .volunteer-vid{
+					// 	height: 100%;
+					// 	width: 100%;
+					// }
+				}
+			}
 
-.room {
-    width: 100%;
-    min-height: 100vh;
-	background: #4776e6; /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #8e54e9, #4776e6); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(
-		to right,
-		#8e54e9,
-		#4776e6
-	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+
+	.call-col{
+		border-radius: 5px;
+		margin: 0 4rem;
+	}
+	.utility-col{
+		.container{
+			background-color: #FFEB3B ;
+			border-radius: 5px;
+			padding: 2rem;	
+		}
+	}
+
 }
