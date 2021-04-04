@@ -129,7 +129,7 @@ const Room = (props) => {
 
       if (isVolunteer) {
     
-        
+          let deleted = 0;    
           const vRef = firebase
             .database()
             .ref("Users")
@@ -152,6 +152,7 @@ const Room = (props) => {
               );
             
               uRef.child(key+"/profile/tempRoomId").remove();
+               deleted = 1;
             }
 
           });
@@ -161,14 +162,21 @@ const Room = (props) => {
           .child(props.match.params.id.slice(0, 6));
           roomRef.remove();
     
-          window.location.href = "/";
+          if(deleted) {
+            
+            connectionRef.current.destroy();
+            setCallEnded(true);
+
+            window.location.href = "/";
+          }
      
         } else {
-        window.location.href = "/";
-      }
-      connectionRef.current.destroy();
-      setCallEnded(true);
 
+          connectionRef.current.destroy();
+          setCallEnded(true);
+    
+          window.location.href = "/";
+      }
     };
 
 	return (
