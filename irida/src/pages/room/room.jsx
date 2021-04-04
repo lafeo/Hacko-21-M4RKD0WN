@@ -5,7 +5,9 @@ import io from "socket.io-client"
 import './room.scss'
 import firebase from '../../firebase'
 
-const socket = io.connect('https://ek-backend.herokuapp.com/')
+// const socket = io.connect('https://ek-backend.herokuapp.com/')
+const socket = io.connect('http://localhost:5000/')
+
 
 const Room = (props) => {
 
@@ -41,10 +43,7 @@ const Room = (props) => {
         roomRef.on("value", (snapshot) => {
           if(snapshot.val()){
           setRoomData(snapshot.val());
-          console.log(snapshot.val());
           setVolunteerCert(snapshot.val().cert);
-          console.log(snapshot.val().cert);
-          console.log("________________")
           }
         });
         if (props.match.params.id.length === 6) {
@@ -136,7 +135,6 @@ const Room = (props) => {
             .orderByChild("profile/cert")
             .equalTo(volunteerCert);
           vRef.on("value",(snapshot)=>{
-            console.log(snapshot.val());
             for(var key in snapshot.val()){
               const uRef = firebase
               .database()
@@ -237,8 +235,13 @@ const Room = (props) => {
               </Button>
       	</Col>
 			</Row>
-      :(callAccepted && !callEnded)?
-      <Button variant="danger" onClick={leaveCall}>Leave Call</Button>
+      :(callAccepted && !callEnded)?  
+      <Row>
+        <Col className="mt-4 call-col bg-light py-3 my-4 d-flex justify-content-center flex-column">
+			      <h4>If you wish to end the call, click on the button below</h4>
+            <Button variant="danger" onClick={leaveCall}>Leave Call</Button>
+        </Col>
+			</Row>
       :
       <></>
       
@@ -248,11 +251,11 @@ const Room = (props) => {
         <Col className="mt-4 utility-col py-3 m-4 d-flex justify-content-center">
 					<Container className="m-4">
 						
-						<h3>Client :  </h3>
-						<p>Client is stressed out</p>
+						<h3>Client : {roomData.cient} </h3>
+						<p>Problems : {roomData.issue}</p>
 
-						<h3>Volunteer :  </h3>
-						<p>Lorem ipsum dolor sit.</p>
+						<h3>Volunteer :  {roomData.volunteer}</h3>
+						<p>Certification ID: {roomData.cert}</p>
 					</Container>
 				</Col>
 			</Row>
