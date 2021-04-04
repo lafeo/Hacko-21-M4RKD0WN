@@ -128,11 +128,6 @@ const Room = (props) => {
     const leaveCall = () => {
 
       if (isVolunteer) {
-        const roomRef = firebase
-          .database()
-          .ref("rooms")
-          .child(props.match.params.id.slice(0, 6));
-        roomRef.remove();
     
         
           const vRef = firebase
@@ -160,6 +155,12 @@ const Room = (props) => {
             }
 
           });
+          const roomRef = firebase
+          .database()
+          .ref("rooms")
+          .child(props.match.params.id.slice(0, 6));
+          roomRef.remove();
+    
           window.location.href = "/";
      
         } else {
