@@ -1,21 +1,15 @@
 .room{
 	width : 100%;
 	min-height: 100vh;
-	background-color: #1789FC;
+    background: #36393F;
+	color: #ACD0DE;	
 	padding-top: 50px;
 
 	.video-col{
 		margin: 0 2rem;
 		display: flex;
-		// flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		// .container{
-		// 	display: flex;
-		// 	justify-content: center;
-
-		// 	align-items: center;
-		// 	margin: 1rem 0;
 			
 			.video-container{
 				display: none;
@@ -23,14 +17,11 @@
 				z-index: 3;
 				display: flex;
 				flex-direction: column;
-				width: 100%;
-				// padding-top: 47.25%;
-				box-shadow:  17px 17px 35px #1474d6,
-							 -17px -17px 35px #1a9eff;
-				
+				width: 80%;
+				background: #2F3136;
 				position: relative;
 				border-radius: 5px;
-				border: solid 2px white;
+				border: solid 2px #2F3136;
 
 				.video-max{
 					background-color: red;
@@ -87,4 +78,46 @@
 		}
 	}
 
+}
+
+.call-icon{
+	width: 100%;
+	height: 100%;
+	width: 50px;
+
+}
+
+.ek-outline-icon{
+	fill: #fff !important;
+	width: 70px;
+}
+
+.connection{
+	display: flex;
+	padding: 1rem;
+
+	font-weight: bold;
+	border-radius: 4%;
+	color: #41A97A;
+	border: 2px solid #41A97A;
+}
+
+.not-connection{
+	display: flex;
+	padding: 1rem;
+	border-radius: 4%;
+	color: #c53636;
+	font-weight: bold;
+
+	border: 2px solid #c53636;
+}
+
+
+.wait-connection{
+	font-weight: bold;
+	display: flex;
+	padding: 1rem;
+	border-radius: 4%;
+	color: #f0ff10;
+	border: 2px solid #f0ff10;
 }
